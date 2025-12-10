@@ -48696,6 +48696,7 @@ GameObject:
   - component: {fileID: 1903016415}
   - component: {fileID: 1903016414}
   - component: {fileID: 1903016417}
+  - component: {fileID: 1903016418}
   m_Layer: 0
   m_Name: Mario_0
   m_TagString: Untagged
@@ -48773,7 +48774,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: 3
   m_Sprite: {fileID: 4120955195336003847, guid: c7bc3eac70e18b34585020bb25ac3e45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -48794,7 +48795,7 @@ Transform:
   m_GameObject: {fileID: 1903016413}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.963585, y: 3.3400002, z: -0.29390833}
+  m_LocalPosition: {x: 9.56, y: 4.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48846,6 +48847,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.8125, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1903016418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903016413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b162875781dd444a918d77917fb011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {x: 2, y: 3, z: 0}
 --- !u!1 &1903918270
 GameObject:
   m_ObjectHideFlags: 0
