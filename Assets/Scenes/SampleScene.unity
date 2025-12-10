@@ -48795,7 +48795,7 @@ Transform:
   m_GameObject: {fileID: 1903016413}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.56, y: 4.64, z: 0}
+  m_LocalPosition: {x: 9.49, y: 4.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48860,6 +48860,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPosition: {x: 2, y: 3, z: 0}
+  movementSpeed: 5
+  direction: 1
+  moveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 47049926-b425-4437-ae38-bf138f91e7dc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  moveDirection: {x: 0, y: 0}
+  rBody2D: {fileID: 0}
+  jumpForce: 10
 --- !u!1 &1903918270
 GameObject:
   m_ObjectHideFlags: 0
