@@ -9,15 +9,26 @@ public class PlayerControler : MonoBehaviour
     public int direction = 1;
     public InputAction moveAction;
     public Vector2 moveDirection;
+    private InputAction jumpAction;
 
     public Rigidbody2D rBody2D;
     public float jumpForce = 10;
+
+    private SpriteRenderer renderer;
 
 
 
     void Awake()
     {
         rBody2D = GetComponent<Rigidbody2D>();
+
+        renderer = GetComponent<SpriteRenderer>();
+
+        moveAction = InputSystem.actions["Move"];
+
+        jumpAction = InputSystem.actions["Jump"];
+
+    
     }
 
 
@@ -28,9 +39,6 @@ public class PlayerControler : MonoBehaviour
 
         transform.position = startPosition;
 
-        moveAction = InputSystem.actions["Move"];
-
-        rBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
     void Update()
@@ -41,9 +49,31 @@ public class PlayerControler : MonoBehaviour
         //transform.position = vector2.MoveTowards(transform.position, new Vector2(transform.position.x + direction, transform.position.y), movementSpeed + Time.deltaTime);
 
         //transform.Translate(new Vector3(moveDirection.x * movementSpeed * Time.deltaTime, 0, 0));
-        transform.position = new Vector3(transform.position.x + moveDirection.x * movementSpeed * Time.deltaTime, transform.position.y, transform.position.z);
 
+        //transform.position = new Vector3(transform.position.x + moveDirection.x * movementSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+        
+        if(moveDirection.x > 0)
+        {
+            renderer.flipX = false;
+        }
 
+        else if(moveDirection.x < 0)
+        {
+            renderer.flipX = true;
+        }
+        
+        if(jumpAction.WasPressedThisFrame())
+        {
+           rBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+    
 
     }
+
+   
+    void FixedUpdate()
+    {
+      rBody2D.linearVelocity = new Vector2(moveDirection.x * movementSpeed, rBody2D.linearVelocity.y);  
+    }
+
 }
