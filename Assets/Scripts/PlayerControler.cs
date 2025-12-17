@@ -16,6 +16,8 @@ public class PlayerControler : MonoBehaviour
 
     private SpriteRenderer renderer;
 
+    private GroundSensor sensor;
+
 
 
     void Awake()
@@ -24,9 +26,13 @@ public class PlayerControler : MonoBehaviour
 
         renderer = GetComponent<SpriteRenderer>();
 
+        sensor = GetComponentInChildren<GroundSensor>();
+
         moveAction = InputSystem.actions["Move"];
 
         jumpAction = InputSystem.actions["Jump"];
+
+        
 
     
     }
@@ -62,7 +68,7 @@ public class PlayerControler : MonoBehaviour
             renderer.flipX = true;
         }
         
-        if(jumpAction.WasPressedThisFrame())
+        if(jumpAction.WasPressedThisFrame() && sensor.isGrouned)
         {
            rBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
