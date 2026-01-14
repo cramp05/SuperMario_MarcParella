@@ -18,6 +18,8 @@ public class PlayerControler : MonoBehaviour
 
     private GroundSensor sensor;
 
+    private Animator animator;
+
 
 
     void Awake()
@@ -32,8 +34,9 @@ public class PlayerControler : MonoBehaviour
 
         jumpAction = InputSystem.actions["Jump"];
 
-        
+        animator = GetComponent<Animator>();
 
+    
     
     }
 
@@ -57,21 +60,30 @@ public class PlayerControler : MonoBehaviour
         //transform.Translate(new Vector3(moveDirection.x * movementSpeed * Time.deltaTime, 0, 0));
 
         //transform.position = new Vector3(transform.position.x + moveDirection.x * movementSpeed * Time.deltaTime, transform.position.y, transform.position.z);
-        
-        if(moveDirection.x > 0)
+
+        if (moveDirection.x > 0)
         {
             renderer.flipX = false;
+            animator.SetBool("IsRunning", true);
         }
 
-        else if(moveDirection.x < 0)
+        else if (moveDirection.x < 0)
         {
             renderer.flipX = true;
+            animator.SetBool("IsRunning", true);
         }
-        
-        if(jumpAction.WasPressedThisFrame() && sensor.isGrouned)
+
+        else
         {
-           rBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            animator.SetBool("IsRunning", false);
         }
+
+        if (jumpAction.WasPressedThisFrame() && sensor.isGrouned)
+        {
+            rBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+
+        animator.SetBool("IsJumping", !sensor.isGrouned);
     
 
     }
