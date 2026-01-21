@@ -5,22 +5,27 @@ public class Enemigo : MonoBehaviour
     public float movementSpeed = 4;
     public int direction = 1;
     public Rigidbody2D rBody2D;
-    private Animator animator;
+    private Animator _animator;
 
     private SpriteRenderer renderer;
 
+    private AudioSource _audioSource;
+    private BoxCollider2D _boxCollider;
+
+    public AudioClip deathSFX;
 
 
     void Awake()
     {
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
         rBody2D = GetComponent<Rigidbody2D>();
-        renderer = GetComponent<SpriteRenderer>();
+        _audioSource = GetComponent<AudioSource>();
+        _boxCollider =GetComponent<BoxCollider2D>();
         
     }
     void Start()
     {
-    
+      
 
     }
 
@@ -40,6 +45,30 @@ public class Enemigo : MonoBehaviour
         {
           direction *= -1;
         }
+       if(collision.gameObject.CompareTag("Player")) 
+       {
+         Destroy(collision.gameObject);
+       }
+    }
+
+    public void GoombaDeath()
+    {
+        _animator.SetBool("Goomba death", true);
+
+        _audioSource.PlayOneShot(deathSFX);
+
+        movementSpeed = 0;
+
+        _boxCollider.enabled = false; //desactiva el box collider
+
+        Destroy(gameObject, 1.2f);
+
+       
+
+
+
+        //_audioSource.Play();
+        //_audioSource.clip = (deathSFX);
     }
 
 }
