@@ -20,6 +20,8 @@ public class PlayerControler : MonoBehaviour
 
     private Animator animator;
 
+    public float bounceforce = 5;
+
 
 
     void Awake()
@@ -35,8 +37,7 @@ public class PlayerControler : MonoBehaviour
         jumpAction = InputSystem.actions["Jump"];
 
         animator = GetComponent<Animator>();
-
-    
+     
     
     }
 
@@ -84,8 +85,16 @@ public class PlayerControler : MonoBehaviour
         }
 
         animator.SetBool("IsJumping", !sensor.isGrouned);
+
+        
     
 
+    }
+
+    public void Bounce()
+    {
+        rBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        animator.SetBool("IsJumping", !sensor.isGrouned);
     }
 
    

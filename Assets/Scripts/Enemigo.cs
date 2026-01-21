@@ -14,13 +14,16 @@ public class Enemigo : MonoBehaviour
 
     public AudioClip deathSFX;
 
+    private GameManger _gameManager;
+
 
     void Awake()
     {
         _animator = GetComponent<Animator>();
         rBody2D = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
-        _boxCollider =GetComponent<BoxCollider2D>();
+        _boxCollider = GetComponent<BoxCollider2D>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManger>();
         
     }
     void Start()
@@ -62,6 +65,11 @@ public class Enemigo : MonoBehaviour
         _boxCollider.enabled = false; //desactiva el box collider
 
         Destroy(gameObject, 1.2f);
+
+
+      _gameManager.AddKill();
+
+
 
        
 

@@ -3,10 +3,13 @@ using UnityEngine;
 public class GroundSensor : MonoBehaviour
 {
    public bool isGrouned;
+   PlayerControler _playerScript;
 
- 
- 
-   
+   void Awake()
+   {
+      _playerScript = GetComponentInParent<PlayerControler>();
+   }
+
 
   void OnTriggerEnter2D(Collider2D collision)
   {
@@ -20,6 +23,8 @@ public class GroundSensor : MonoBehaviour
          //Destroy(collision.gameObject);
          Enemigo _enemyScript = collision.gameObject.GetComponent<Enemigo>();
          _enemyScript.GoombaDeath();
+        
+        _playerScript.Bounce();
 
      }
 
