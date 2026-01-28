@@ -18,14 +18,18 @@ public class Camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.position = new Vector3(cameraTarget.position.x, 0, 0) + cameraOffset;
-        Vector3 desiredPosition = cameraTarget.position + cameraOffset;
+       if(cameraTarget !=null)
+       {
+         //transform.position = new Vector3(cameraTarget.position.x, 0, 0) + cameraOffset;
+         Vector3 desiredPosition = cameraTarget.position + cameraOffset;
 
-        float clampX = Mathf.Clamp(desiredPosition.x, minCameraPosition.x, maxCameraPosition.x);
-        float clampY = Mathf.Clamp(desiredPosition.y, minCameraPosition.y, maxCameraPosition.y);
+         float clampX = Mathf.Clamp(desiredPosition.x, minCameraPosition.x, maxCameraPosition.x);
+         float clampY = Mathf.Clamp(desiredPosition.y, minCameraPosition.y, maxCameraPosition.y);
 
-        Vector3 clampedPosition = new Vector3(clampX, clampY, desiredPosition.z);
+         Vector3 clampedPosition = new Vector3(clampX, clampY, desiredPosition.z);
 
-        transform.position = clampedPosition;
+         transform.position = clampedPosition;
+       }
+
     }
 }

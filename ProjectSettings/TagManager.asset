@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Suelos Para Enemigos
+  - Suelo Para Enemigos
   layers:
   - Default
   - TransparentFX

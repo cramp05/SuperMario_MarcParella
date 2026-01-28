@@ -7,9 +7,17 @@ public class PrimerScript : MonoBehaviour
     private bool verdaderoFalse = false;
     private string cadenaTexto = "hola";
     private char letra = 'a';
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+    public int[] letras = "a";
+
+    private int[] intArray = new int[5]{2, 9, 5, 4, 3}; 
+    //como no puedes asignarlo en el inspector aqui pones de cuanto quieres que sea el array con = new int[numero que desees], y detras pondrias {y dentro el valor de cada uno};
+
     void Start()
     {
+        intArray[2] = 27; 
+        //con esto accedes al nuemro del array que quieres y puedes canviarle su valor poniendo intArray[dentro la cajita qeu deas cojer] = y asignas el nuevo valor:
+        
         numeroEntero = 37;
 
         cadenaTexto = "hola Mundo";
