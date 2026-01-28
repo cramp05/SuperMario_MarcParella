@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameManger : MonoBehaviour
 {
-  public int killedEnemies = 0; //para contar goonbas muertos
+  public int coins = 0; //para contar monedas
 
     void Start()
     {
@@ -15,9 +15,9 @@ public class GameManger : MonoBehaviour
         
     }
 
-    public void AddKill()
+    public void Coins()
     {
-        killedEnemies++; 
+        coins++; 
     }
 
 }

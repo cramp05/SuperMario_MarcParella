@@ -15,12 +15,18 @@ public class PlayerControler : MonoBehaviour
     public float jumpForce = 10;
 
     private SpriteRenderer renderer;
+    private BoxCollider2D _boxCollider;
 
     private GroundSensor sensor;
 
     private Animator animator;
+    private AudioSource _audioSource;
+    public AudioClip deathSFXMario;
+    public AudioClip jumpMario;
 
     public float bounceforce = 5;
+
+
 
 
 
@@ -29,6 +35,7 @@ public class PlayerControler : MonoBehaviour
         rBody2D = GetComponent<Rigidbody2D>();
 
         renderer = GetComponent<SpriteRenderer>();
+        _boxCollider = GetComponent<BoxCollider2D>();
 
         sensor = GetComponentInChildren<GroundSensor>();
 
@@ -37,6 +44,8 @@ public class PlayerControler : MonoBehaviour
         jumpAction = InputSystem.actions["Jump"];
 
         animator = GetComponent<Animator>();
+
+        _audioSource = GetComponent<AudioSource>();
      
     
     }
@@ -82,13 +91,23 @@ public class PlayerControler : MonoBehaviour
         if (jumpAction.WasPressedThisFrame() && sensor.isGrouned)
         {
             rBody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            _audioSource.PlayOneShot(jumpMario);
         }
 
         animator.SetBool("IsJumping", !sensor.isGrouned);
+    }
 
-        
-    
+    public void Mariodeath()
+    {
+        animator.SetBool("IsDeath", true);
 
+        _audioSource.PlayOneShot(deathSFXMario);
+
+        movementSpeed = 0;
+
+        _boxCollider.enabled = false; //desactiva el box collider
+
+        Destroy(gameObject, 1.2f);
     }
 
     public void Bounce()

@@ -52,8 +52,8 @@ public class EnemySpawn : MonoBehaviour
             foreach (Transform item in spawnPoints) //bucle que por cada elemento en mi arrai pasa algo
             // se ejecuta uan vez por cada elemento que hay en el arey en este caso, (tipo de variable)
             {
-                Instantiate(enemyPrefap[Random.Range(0, 2)], item.position, Quaternion.identity);
-            //el enemyPrefap la hemos echo array entonces le ponemos que coje el enemigo random escogiendo entre 0 y 1.
+                Instantiate(enemyPrefap[Random.Range(0, enemyPrefap.Length)], item.position, Quaternion.identity);
+            //el enemyPrefap la hemos echo array entonces le ponemos que coje el enemigo random escogiendo entre los numeros que hay en el aray
             // con esto puedes spawnear 2 o mas tipos de enemigos que esten dentro de la variable array de enemyPrefap
             //Crear clon (objeto, donde queremos clonar en este caso con variable de arrai, rotacion (Quaternion.identity coje los valores que tiene el prefab, en este caso 0 0 0))
             }

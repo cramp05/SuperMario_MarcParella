@@ -8,7 +8,6 @@ public class PrimerScript : MonoBehaviour
     private string cadenaTexto = "hola";
     private char letra = 'a';
     
-    public int[] letras = "a";
 
     private int[] intArray = new int[5]{2, 9, 5, 4, 3}; 
     //como no puedes asignarlo en el inspector aqui pones de cuanto quieres que sea el array con = new int[numero que desees], y detras pondrias {y dentro el valor de cada uno};

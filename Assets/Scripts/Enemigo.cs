@@ -16,6 +16,8 @@ public class Enemigo : MonoBehaviour
 
     private GameManger _gameManager;
 
+    private PlayerControler _playerScript;
+
 
     void Awake()
     {
@@ -24,6 +26,8 @@ public class Enemigo : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _boxCollider = GetComponent<BoxCollider2D>();
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameManger>();
+
+        _playerScript = GameObject.Find("Mario").GetComponent<PlayerControler>();
         
     }
     void Start()
@@ -50,7 +54,7 @@ public class Enemigo : MonoBehaviour
         }
        if(collision.gameObject.CompareTag("Player")) 
        {
-         Destroy(collision.gameObject);
+         _playerScript.Mariodeath();
        }
     }
 
@@ -67,7 +71,7 @@ public class Enemigo : MonoBehaviour
         Destroy(gameObject, 1.2f);
 
 
-      _gameManager.AddKill();
+
 
 
 
