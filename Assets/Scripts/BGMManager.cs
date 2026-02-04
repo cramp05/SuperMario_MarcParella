@@ -31,4 +31,14 @@ public class BGMManager : MonoBehaviour
         //_audioSource.Stop();
         //_audioSource.Pause();
     }
+
+    public void Win()
+    {
+        _audioSource.Stop();
+    }
+
+    public void StopBGM()
+    {
+        _audioSource.Stop();
+    }
 }

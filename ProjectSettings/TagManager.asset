@@ -7,6 +7,7 @@ TagManager:
   - Suelos Para Enemigos
   - Suelo Para Enemigos
   - Win
+  - TopeParaEnemigos
   layers:
   - Default
   - TransparentFX

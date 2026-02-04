@@ -52,10 +52,18 @@ public class Enemigo : MonoBehaviour
         {
           direction *= -1;
         }
+
        if(collision.gameObject.CompareTag("Player")) 
        {
          _playerScript.Mariodeath();
        }
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("TopeParaEnemigos"))
+        {
+          direction *= -1;
+        }
     }
 
     public void GoombaDeath()

@@ -23,8 +23,11 @@ public class PlayerControler : MonoBehaviour
     private AudioSource _audioSource;
     public AudioClip deathSFXMario;
     public AudioClip jumpMario;
+    public AudioClip win;
 
     public float bounceforce = 5;
+
+    private BGMManager _bgmManagerScript;
 
 
 
@@ -46,6 +49,8 @@ public class PlayerControler : MonoBehaviour
         animator = GetComponent<Animator>();
 
         _audioSource = GetComponent<AudioSource>();
+
+        _bgmManagerScript = GameObject.Find("BGM Manager").GetComponent<BGMManager>();
      
     
     }
@@ -99,6 +104,8 @@ public class PlayerControler : MonoBehaviour
 
     public void Mariodeath()
     {
+        _bgmManagerScript.StopBGM();
+        
         animator.SetBool("IsDeath", true);
 
         _audioSource.PlayOneShot(deathSFXMario);
@@ -107,8 +114,18 @@ public class PlayerControler : MonoBehaviour
 
         _boxCollider.enabled = false; //desactiva el box collider
 
-        Destroy(gameObject, 1.2f);
+        Destroy(gameObject, 2f);
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Win")
+        {
+            _bgmManagerScript.Win();
+            _audioSource.PlayOneShot(win);
+        }        
+    }
+
 
     public void Bounce()
     {
